@@ -104,7 +104,7 @@ let python_highlight_all=1
 
 let mapleader="\<Space>"
 nnoremap <Leader>s :w<CR>
-nnoremap <Leader>w :wq<CR>
+nnoremap <Leader>w :wq!<CR>
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>i gg=G
 nnoremap <Leader><Leader> a
@@ -112,8 +112,18 @@ nnoremap <Leader>tn :tabn<CR>
 nnoremap <Leader>tp :tabp<CR>
 nnoremap <Leader>tc :tabc<CR>
 nnoremap <Leader>to :tabo<CR>
+nnoremap <Leader>b <C-b>
+nnoremap <Leader>n <C-f>
+nnoremap <Leader>wl <C-w>l
+nnoremap <Leader>wh <C-w>h
+nnoremap <silent> <Left> :bp<CR>
+nnoremap <silent> <RIght> :bn<CR>
 nnoremap <CR> G
+vmap <CR> G
 nnoremap <BS> gg
+vmap <BS> gg
+
+inoremap <tab> <C-p>
 
 set guioptions-=l
 set guioptions-=L
@@ -134,6 +144,7 @@ elseif has("gui_win32")
 set guifont=DejaVu_Sans_Mono:h14
 end
 
+execute pathogen#infect()
 syntax enable
 syntax on
 filetype indent on
@@ -143,7 +154,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-execute pathogen#infect()
 
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
@@ -276,4 +286,3 @@ endfunction
 
 
 
-inoremap <tab> <C-p>
