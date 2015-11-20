@@ -77,31 +77,32 @@ endfunction
 
 
 
-
+"对齐设置
 set autoindent
-
+set smartindent
 set cindent
 
 
-set backspace=2
 
-set nu
-
-set background=dark
-
-set nobackup
-
+"配色主题设置
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 set t_Co=256
+set background=dark
 
-set ts=4
+"缩进相关设置
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set backspace=2
+set softtabstop=4
 
-set showmatch
+
 
 let python_highlight_all=1
 
+"快捷键映射
 let mapleader="\<Space>"
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>w :wq!<CR>
@@ -122,9 +123,9 @@ nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
-
 inoremap <tab> <C-p>
 
+"界面设置
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
@@ -135,7 +136,11 @@ set ruler
 set cursorline
 set cursorcolumn
 set hlsearch
+set showmatch
+set nobackup
+set nu "行号
 
+"字体设置
 if has("gui_gtk2")
 set guifont=YaHei\ Consolas\ Hybrid\ 14
 elseif has("gui_macvim")
@@ -144,17 +149,15 @@ elseif has("gui_win32")
 set guifont=DejaVu_Sans_Mono:h14
 end
 
+"插件设置
+"pathogen
 execute pathogen#infect()
 syntax enable
 syntax on
 filetype indent on
+filetype plugin indent on
 
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-
-
+"NERDtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
