@@ -149,9 +149,6 @@ elseif has("gui_win32")
 set guifont=DejaVu_Sans_Mono:h14
 end
 
-"C/C++快捷方式
-inoremap {{ {<CR><CR>}<ESC>kia<ESC>gg=G<C-o><C-o>zzws
-
 "插件设置
 "pathogen
 execute pathogen#infect()
