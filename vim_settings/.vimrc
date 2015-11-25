@@ -149,13 +149,17 @@ elseif has("gui_win32")
 set guifont=DejaVu_Sans_Mono:h14
 end
 
+"C/C++快捷方式
+inoremap {{ {<CR><CR>}<ESC>kia<ESC>gg=G<C-o><C-o>zzws
+
 "插件设置
 "pathogen
 execute pathogen#infect()
 syntax enable
 syntax on
+filetype on
 filetype indent on
-filetype plugin indent on
+filetype plugin on
 
 "NERDtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
