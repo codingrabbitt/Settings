@@ -158,6 +158,9 @@ filetype on
 filetype indent on
 filetype plugin on
 
+"Github
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 "NERDtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
