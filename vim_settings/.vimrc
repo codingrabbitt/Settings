@@ -123,7 +123,7 @@ nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
-inoremap <tab> <C-p>
+"inoremap <tab> <C-p>
 
 "界面设置
 set guioptions-=l
