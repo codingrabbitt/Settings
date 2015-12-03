@@ -108,17 +108,18 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>w :wq!<CR>
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>i gg=G
-nnoremap <Leader><Leader> a
 nnoremap <Leader>tn :tabn<CR>
 nnoremap <Leader>tp :tabp<CR>
 nnoremap <Leader>tc :tabc<CR>
 nnoremap <Leader>to :tabo<CR>
 nnoremap <Leader>b <C-b>
 nnoremap <Leader>n <C-f>
-nnoremap <Leader>wl <C-w>l
-nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>l <C-w>l
+nnoremap <Leader>h <C-w>h
+nnoremap <silent> <Up> :vertical res+5<CR>
+nnoremap <silent> <Down> :vertical res-5<CR>
 nnoremap <silent> <Left> :bp<CR>
-nnoremap <silent> <RIght> :bn<CR>
+nnoremap <silent> <Right> :bn<CR>
 nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
