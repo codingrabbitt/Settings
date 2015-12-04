@@ -124,6 +124,9 @@ nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
+"YouCompleteMe 快捷键
+nnoremap <Leader>ff :YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>fg :YcmCompleter GoToDefinition<CR>
 "inoremap <tab> <C-p>
 
 "界面设置
@@ -286,11 +289,11 @@ function TitleDet()
 
 endfunction
 
-
-
-
-
- 
-
-
-
+"Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()
+filetype plugin indent on
