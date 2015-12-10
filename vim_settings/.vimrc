@@ -181,7 +181,7 @@ let NERDTreeAutoDeleteBuffer=1
 
 "Emmet
 let g:user_emmet_install_global=0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,php EmmetInstall
 
 map <f5> :call CR2()<cr>
 
