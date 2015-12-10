@@ -83,7 +83,6 @@ set smartindent
 set cindent
 
 
-
 "配色主题设置
 colorscheme molokai
 let g:molokai_original = 1
@@ -116,6 +115,7 @@ nnoremap <Leader>b <C-b>
 nnoremap <Leader>n <C-f>
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
+nnoremap <Leader>/ :nohl<CR>
 nnoremap <silent> <Up> :vertical res+5<CR>
 nnoremap <silent> <Down> :vertical res-5<CR>
 nnoremap <silent> <Left> :bp<CR>
