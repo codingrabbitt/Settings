@@ -179,6 +179,10 @@ let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
+"Emmet
+let g:user_emmet_install_global=0
+autocmd FileType html,css EmmetInstall
+
 map <f5> :call CR2()<cr>
 
 func CR2()
@@ -295,5 +299,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 filetype plugin indent on
