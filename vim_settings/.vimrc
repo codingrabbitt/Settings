@@ -182,6 +182,8 @@ let NERDTreeAutoDeleteBuffer=1
 "Emmet
 let g:user_emmet_install_global=0
 autocmd FileType html,css,php EmmetInstall
+let g:user_emmet_next_key='<C-y>y'
+let g:user_emmet_prev_key='<C-y>t'
 
 map <f5> :call CR2()<cr>
 
