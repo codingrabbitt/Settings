@@ -191,15 +191,15 @@ func CR2()
 
 if &filetype=="cpp"
 
-	exec "!g++ %<.cpp -o %< && %<"
+	exec "!g++ %<.cpp -o %< && ./%<"
 
 elseif &filetype=="c"
 
-	exec "!gcc %<.c -o %< && %<"
+	exec "!gcc %<.c -o %< && ./%<"
 
 elseif &filetype=="python"
 
-	exec "!python \"%<.py\""
+	exec "!python \"./%<.py\""
 
 endif
 
@@ -302,5 +302,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
