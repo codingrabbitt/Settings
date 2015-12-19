@@ -75,7 +75,8 @@ function MyDiff()
 endfunction
 
 
-
+set encoding=utf-8
+set fileformat=unix
 
 "对齐设置
 set autoindent
@@ -88,7 +89,6 @@ colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 set t_Co=256
-set background=dark
 
 "缩进相关设置
 set expandtab
@@ -96,10 +96,21 @@ set shiftwidth=4
 set tabstop=4
 set backspace=2
 set softtabstop=4
+set textwidth=79
 
 
 
 let python_highlight_all=1
+
+"YCM支持Virtualenv设置
+py << EOF
+import os
+import sys
+if "VIRTUAL_ENV" in os.environ:
+    project_base_dir=os.environ("VIRTUAL_ENV")
+    activate_this=os.path.join(project_base_dir,"bin/activate_this.py")
+    execfile(activate_this,dict(__file__=activate_this))
+EOF
 
 "快捷键映射
 let mapleader="\<Space>"
@@ -124,6 +135,8 @@ nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
+"键盘映射-.python
+nnoremap <Leader>z za
 "YouCompleteMe 快捷键
 nnoremap <Leader>ff :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>fg :YcmCompleter GoToDefinition<CR>
@@ -135,7 +148,7 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 set guioptions-=m
-set guioptions-=T
+"set guioptions-=T
 set ruler
 set cursorline
 set cursorcolumn
@@ -178,6 +191,7 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+
 
 "Emmet
 let g:user_emmet_install_global=0
@@ -303,5 +317,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
 call vundle#end()
 filetype plugin indent on
