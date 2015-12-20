@@ -99,7 +99,7 @@ set softtabstop=4
 set textwidth=79
 
 
-
+set laststatus=2
 let python_highlight_all=1
 
 "YCM支持Virtualenv设置
@@ -198,6 +198,15 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css,php EmmetInstall
 let g:user_emmet_next_key='<C-y>y'
 let g:user_emmet_prev_key='<C-y>t'
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
 map <f5> :call CR2()<cr>
 
@@ -320,5 +329,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'Lokaltog/vim-powerline'
 call vundle#end()
 filetype plugin indent on
