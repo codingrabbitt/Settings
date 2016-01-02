@@ -1,0 +1,13 @@
+export PATH=/usr/local/mysql/bin:$PATH 
+CLICOLOR=1 
+LSCOLORS=gxfxcxdxbxegedabagacad
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
+export TERM=xterm-color
+alias vi="vim"
+alias ls="ls -G"
+alias ll="ls -l"
+alias djr="python manage.py runserver"
+alias dj="python manage.py"
+alias djmm="python manage.py makemigrations"
+alias djm="python manage.py migrate"
+alias sba="source ./bin/activate"
