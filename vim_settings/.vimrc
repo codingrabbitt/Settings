@@ -116,6 +116,8 @@ nnoremap <Leader>b <C-b>
 nnoremap <Leader>n <C-f>
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
 nnoremap <Leader>/ :nohl<CR>
 nnoremap <silent> <Up> :vertical res+5<CR>
 nnoremap <silent> <Down> :vertical res-5<CR>
