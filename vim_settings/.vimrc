@@ -272,7 +272,7 @@ function AddTitle()
     elseif &filetype=="python"
         let prefix = '#'
         call append(0,"#!/usr/bin/python")
-        call append(1,"# coding:utf-8")
+        call append(1,"# coding:UTF-8")
         let start = 2
     else
         return
