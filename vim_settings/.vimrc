@@ -273,7 +273,7 @@ function AddTitle()
         let prefix = '#'
         call append(0,"#!/usr/bin/python")
         call append(1,"# coding:utf-8")
-        let start = 1
+        let start = 2
     else
         return
     endif
