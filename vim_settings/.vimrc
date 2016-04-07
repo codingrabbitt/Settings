@@ -182,6 +182,11 @@ set showmatch
 set nobackup
 set nu "行号
 
+"设置持久撤销
+set undofile
+set undodir=$VIMFILES/\_undodir
+set undolevels=1000
+
 "字体设置
 if has("gui_gtk2")
     set guifont=YaHei\ Consolas\ Hybrid\ 14
