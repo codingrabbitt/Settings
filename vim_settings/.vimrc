@@ -136,12 +136,13 @@ nnoremap <Leader>u <C-r>
 nnoremap <Leader>/ :nohl<CR>
 
 "垂直分割大小调整
-nnoremap <silent> <Up> :vertical res+5<CR>
-nnoremap <silent> <Down> :vertical res-5<CR>
+nnoremap <silent> <Up> :res+5<CR>
+nnoremap <silent> <Down> :res-5<CR>
+nnoremap <silent> <Left> :vertical res-5<CR>
+nnoremap <silent> <Right> :vertical res+5<CR>
 
 "缓冲区切换
-nnoremap <silent> <Left> :bp<CR>
-nnoremap <silent> <Right> :bn<CR>
+nnoremap <tab> :bp<CR>
 
 "复制粘贴
 vmap <Leader>c "+y
@@ -152,9 +153,6 @@ nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
-
-"键盘映射-.python
-nnoremap <Leader>z za
 
 "YouCompleteMe 快捷键
 nnoremap <Leader>ff :YcmCompleter GoToDeclaration<CR>
@@ -182,6 +180,14 @@ set showmatch
 set nobackup
 set nu "行号
 
+"设置持久撤销
+let $VIMTEMP = $VIMFILES.'/tmp'
+if v:version >= 703
+set undofile
+set undodir=$VIMTEMP
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer
+endif
 
 "字体设置
 if has("gui_gtk2")
@@ -217,13 +223,6 @@ let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
-
-"Emmet
-let g:user_emmet_install_global=0
-autocmd FileType html,css,php EmmetInstall
-let g:user_emmet_next_key='<Leader>en'
-let g:user_emmet_prev_key='<Leader>ep'
-
 "Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -234,21 +233,13 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 "Taglist
-"让taglist窗口出现在Vim的右边
 let Tlist_Use_Right_Window = 1
-"当同时显示多个文件中的tag时，设置为1，可使taglist只显示当前文件tag，其它文件的tag都被折叠起来。
 let Tlist_File_Fold_Auto_Close = 1 
-"只显示一个文件中的tag，默认为显示多个
 let Tlist_Show_One_File = 1
-"Tag的排序规则，以名字排序。默认是以在文件中出现的顺序排序
 let Tlist_Sort_Type ='name' 
-"Taglist窗口打开时，立刻切换为有焦点状态
 let Tlist_GainFocus_On_ToggleOpen = 1 
-"如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Exit_OnlyWindow = 1 
-"设置窗体宽度为32，可以根据自己喜好设置
 let Tlist_WinWidth = 32 
-"这里比较重要了，设置ctags的位置，不是指向MacOS自带的那个，而是我们用homebrew安装的那个
 let Tlist_Ctags_Cmd ='/usr/local/Cellar/ctags/5.8_1/bin/ctags' 
 
 "运行
@@ -339,10 +330,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/indentpython'
 Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-powerline'
 Bundle 'taglist.vim'
