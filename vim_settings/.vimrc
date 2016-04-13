@@ -74,6 +74,19 @@ function MyDiff()
 
 endfunction
 
+"Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'Lokaltog/vim-powerline'
+Bundle 'taglist.vim'
+call vundle#end()
+filetype plugin indent on
 
 set encoding=utf-8
 set fileformat=unix
@@ -324,16 +337,4 @@ function TitleDet()
     call AddTitle()
 endfunction
 
-"Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'Lokaltog/vim-powerline'
-Bundle 'taglist.vim'
-call vundle#end()
-filetype plugin indent on
+
