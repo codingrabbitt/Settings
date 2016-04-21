@@ -119,8 +119,9 @@ let python_highlight_all=1
 let mapleader="\<Space>"
 
 "退出
-nnoremap <Leader>s :call TitleDet()<CR>:w<CR>
-nnoremap <Leader>w :call TitleDet()<CR>:wq!<CR>
+nnoremap <Leader>s :w<CR>
+nnoremap <Leader>w :wq!<CR>
+nnoremap <Leader>e :call TitleDet()<CR>:wq!<CR>
 nnoremap <Leader>q :q!<CR>
 
 "对齐
