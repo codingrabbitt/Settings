@@ -122,7 +122,7 @@ let mapleader="\<Space>"
 "退出
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>w :wq!<CR>
-nnoremap <Leader>e :call TitleDet()<CR>:wq!<CR>
+nnoremap <Leader>e :call TitleDet()<CR>:w<CR>
 nnoremap <Leader>q :q!<CR>
 
 "对齐
