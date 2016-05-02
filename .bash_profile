@@ -21,4 +21,6 @@ alias da="deactivate"
 alias gits="git status"
 alias gitaa="echo -e \"\033[33m### Before add ###\033[0m\" && gits && git add . && echo -e \"\033[33m### After add ###\033[0m\" && gits"
 alias gitc="git commit"
+alias gitps="git push"
+alias gitpl="git pull"
 
