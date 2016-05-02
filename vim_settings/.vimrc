@@ -196,7 +196,7 @@ set nobackup
 set nu "行号
 
 "设置持久撤销
-let $VIMTEMP = $VIMFILES.'/tmp'
+let $VIMTEMP = '~/.vim/tmp'
 if v:version >= 703
 set undofile
 set undodir=$VIMTEMP
