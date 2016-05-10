@@ -86,6 +86,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-powerline'
 Bundle 'taglist.vim'
+Bundle 'mattn/emmet-vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -198,10 +199,10 @@ set nu "行号
 "设置持久撤销
 let $VIMTEMP = '~/.vim/tmp'
 if v:version >= 703
-set undofile
-set undodir=$VIMTEMP
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer
+    set undofile
+    set undodir=$VIMTEMP
+    set undolevels=1000 "maximum number of changes that can be undone
+    set undoreload=10000 "maximum number lines to save for undo on a buffer
 endif
 
 "字体设置
@@ -256,6 +257,12 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Exit_OnlyWindow = 1 
 let Tlist_WinWidth = 32 
 let Tlist_Ctags_Cmd ='/usr/local/Cellar/ctags/5.8_1/bin/ctags' 
+
+"Emmet
+let g:user_emmet_expandabbr_key='<c-e>'
+let g:user_emmet_complete_tag=1
+let g:user_emmet_next_key='<c-n>'
+let g:user_emmet_prev_key='<c-p>'
 
 "运行
 map <Leader>r :call CR2()<cr>
