@@ -5,12 +5,12 @@ echo "To continue input \"Y\", cancel input \"N\":\c"
 read choice
 if [ "$choice"x = "Y"x ]
 then
-    sudo apt-get install build-essential cmake python-dev python3-dev ctags vim
+    sudo apt-get install build-essential cmake python-dev ctags vim
 
     sudo rm -rf ~/.vim
     sudo rm -rf ~/.vimrc
-    sudo cp ~/Settings/vim_settings/.vim ~/.vim
-    sudo cp ~/Settings/vim_settings/.vimrc ~/.vimrc
+    sudo cp -r ~/Settings/vim_settings/.vim ~/.vim
+    sudo cp -r ~/Settings/vim_settings/.vimrc ~/.vimrc
     
     echo "Your name:\c"
     read name
