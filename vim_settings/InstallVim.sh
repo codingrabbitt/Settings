@@ -6,7 +6,9 @@ read choice
 if [ "$choice"x = "Y"x ]
 then
     sudo apt-get install git build-essential cmake python-dev python3-dev ctags vim
-    
+
+    rm -rf ~/.vim
+    rm -rf ~/.vimrc
     cp ~/Settings/vim_settings/.vim ~/.vim
     cp ~/Settings/vim_settings/.vimrc ~/.vimrc
     rm -rf ~/Settings
