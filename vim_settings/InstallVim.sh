@@ -5,7 +5,7 @@ echo "To continue input \"Y\", cancel input \"N\"."
 read choice
 if [ "$choice"x = "Y"x ]
 then
-    sudo apt-get install git build-essential cmake python-dev python3-dev ctags vim
+    sudo apt-get install build-essential cmake python-dev python3-dev ctags vim
 
     rm -rf ~/.vim
     rm -rf ~/.vimrc
