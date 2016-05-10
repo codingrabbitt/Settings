@@ -33,6 +33,8 @@ then
     sudo git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
     sudo vim +PluginInstall +qall
     sudo ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+    sudo vim +TlistToggle +qall
+    sudo vim ~/.vimrc +qall
 else
     echo "Canceled."
 fi
