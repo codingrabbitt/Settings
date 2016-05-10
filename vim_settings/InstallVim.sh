@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 echo "This script will overwrite files on this computer."
 echo "Please make sure you have .vimrc file backup."
 echo "To continue input \"Y\", cancel input \"N\"."
