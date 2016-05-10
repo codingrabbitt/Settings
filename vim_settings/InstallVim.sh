@@ -5,6 +5,7 @@ echo "To continue input \"Y\", cancel input \"N\":\c"
 read choice
 if [ "$choice"x = "Y"x ]
 then
+    sudo apt-get remove vim vim-common
     sudo apt-get install build-essential cmake python-dev ctags vim
 
     sudo rm -rf ~/.vim
