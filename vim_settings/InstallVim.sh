@@ -1,17 +1,16 @@
 #!/bin/sh
 echo "This script will overwrite files on this computer."
 echo "Please make sure you have .vimrc file backup."
-echo "To continue input \"Y\", cancel input \"N\"."
+echo "To continue input \"Y\", cancel input \"N\":\c"
 read choice
 if [ "$choice"x = "Y"x ]
 then
     sudo apt-get install build-essential cmake python-dev python3-dev ctags vim
 
-    rm -rf ~/.vim
-    rm -rf ~/.vimrc
-    cp ~/Settings/vim_settings/.vim ~/.vim
-    cp ~/Settings/vim_settings/.vimrc ~/.vimrc
-    rm -rf ~/Settings
+    sudo rm -rf ~/.vim
+    sudo rm -rf ~/.vimrc
+    sudo cp ~/Settings/vim_settings/.vim ~/.vim
+    sudo cp ~/Settings/vim_settings/.vimrc ~/.vimrc
     
     echo "Your name:\c"
     read name
