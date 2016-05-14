@@ -198,12 +198,10 @@ set nu "行号
 
 "设置持久撤销
 let $VIMTEMP = '~/.vim/tmp'
-if v:version >= 703
-    set undofile
-    set undodir=$VIMTEMP
-    set undolevels=1000 "maximum number of changes that can be undone
-    set undoreload=10000 "maximum number lines to save for undo on a buffer
-endif
+set undofile
+set undodir=$VIMTEMP/\_undodir
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer
 
 "字体设置
 if has("gui_gtk2")
@@ -291,7 +289,7 @@ function AddTitle()
     else
         return
     endif
-    call append(start,prefix." Author: David")
+    call append(start,prefix." Author: sie")
     call append(start+1,prefix." Email: youchen.du@gmail.com")
     call append(start+2,prefix." Created: ".strftime("%Y-%m-%d %H:%M"))
     call append(start+3,prefix." Last modified: ".strftime("%Y-%m-%d %H:%M"))
