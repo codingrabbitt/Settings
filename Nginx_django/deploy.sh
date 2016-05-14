@@ -130,6 +130,7 @@ then
     # Install Python and Django requirements
     # Install nginx and uWSGI
     sudo apt-get install python-dev
+    sudo apt-get install libmysqlclient-dev libmysqld-dev
     sudo apt-get install mysql-server mysql-client
     if [ -f "requirements.txt" ]
     then
