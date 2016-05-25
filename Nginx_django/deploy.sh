@@ -147,10 +147,10 @@ then
     read home_path
 
     echo -e "1- Copy nginx.conf with "$project_name
-    cp nginx.conf $project_name.conf
+    mv nginx.conf $project_name.conf
 
     echo -e "2- Copy uwsgi.ini with "$project_name
-    cp uwsgi.ini $project_name.ini
+    mv uwsgi.ini $project_name.ini
 
 
     echo -e "3- Replace path/to/project with "$project_path" in nginx.conf"
@@ -174,7 +174,11 @@ then
     sudo ln -s $project_path/$project_name.conf /etc/nginx/sites-available/
     sudo ln -s $project_path/$project_name.ini /etc/uwsgi/apps-available/
 
-    echo -e "10- Restart nginx server and uWSGI."
+    echo -e "10- Change settings to production environ."
+    sed -i "s#"$project_name".settings#"$project_name".settings_production#g" $project_path/$project_name/wsgi.py
+
+
+    echo -e "11- Restart nginx server and uWSGI."
     sudo /etc/rc.local
 
 elif [ "$choice"x = "update"x ]
