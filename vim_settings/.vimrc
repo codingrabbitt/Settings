@@ -198,10 +198,12 @@ set nu "行号
 
 "设置持久撤销
 let $VIMTEMP = '~/.vim/tmp'
-set undofile
-set undodir=$VIMTEMP/\_undodir
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer
+if v:version >= 703
+    set undofile
+    set undodir=$VIMTEMP
+    set undolevels=1000 "maximum number of changes that can be undone
+    set undoreload=10000 "maximum number lines to save for undo on a buffer
+endif
 
 "字体设置
 if has("gui_gtk2")
@@ -245,6 +247,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
 
 "Taglist
 let Tlist_Use_Right_Window = 1
@@ -266,9 +272,17 @@ let g:user_emmet_prev_key='<c-p>'
 map <Leader>r :call CR2()<cr>
 func CR2()
     if &filetype=="cpp"
-        exec "!g++ %<.cpp -o %< && ./%<"
+        if has("mac")
+            exec "!g++-5 %<.cpp -o %< && ./%<"
+        else
+            exec "!g++ %<.cpp -o %< && ./%<"
+        endif
     elseif &filetype=="c"
-        exec "!gcc %<.c -o %< && ./%<"
+        if has("mac")
+            exec "!gcc-5 %<.cpp -o %< && ./%<"
+        else
+            exec "!gcc %<.c -o %< && ./%<"
+        endif
     elseif &filetype=="python"
         exec "!python \"./%<.py\""
     endif
@@ -289,7 +303,7 @@ function AddTitle()
     else
         return
     endif
-    call append(start,prefix." Author: sie")
+    call append(start,prefix." Author: David")
     call append(start+1,prefix." Email: youchen.du@gmail.com")
     call append(start+2,prefix." Created: ".strftime("%Y-%m-%d %H:%M"))
     call append(start+3,prefix." Last modified: ".strftime("%Y-%m-%d %H:%M"))
