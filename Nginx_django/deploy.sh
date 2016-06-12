@@ -145,12 +145,14 @@ then
     read project_name
     echo -e "home path:\c"
     read home_path
+    echo -e "server port:\c"
+    read server_port
 
     echo -e "1- Copy nginx.conf with "$project_name
-    cp nginx.conf $project_name.conf
+    mv nginx.conf $project_name.conf
 
     echo -e "2- Copy uwsgi.ini with "$project_name
-    cp uwsgi.ini $project_name.ini
+    mv uwsgi.ini $project_name.ini
 
 
     echo -e "3- Replace path/to/project with "$project_path" in nginx.conf"
@@ -159,14 +161,16 @@ then
     sed -i 's#project_name#'$project_name'#g' $project_name.conf
     echo -e "5- Replace path/to/home with "$home_path" in nginx.conf"
     sed -i 's#path/to/home#'$home_path'#g' $project_name.conf
-    echo -e "6- Replace path/to/project with "$project_path" in uwsgi.ini"
+    echo -e "6- Replace port_to_serve with "$server_port" in nginx.conf"
+    sed -i 's#port_to_serve#'$server_port'#g' $project_name.conf
+    echo -e "7- Replace path/to/project with "$project_path" in uwsgi.ini"
     sed -i 's#path/to/project#'$project_path'#g' $project_name.ini
-    echo -e "7- Replace project_name with "$project_name" in uwsgi.ini"
+    echo -e "8- Replace project_name with "$project_name" in uwsgi.ini"
     sed -i 's#project_name#'$project_name'#g' $project_name.ini
-    echo -e "8- Replace path/to/home with "$home_path" in uwsgi.ini"
+    echo -e "9- Replace path/to/home with "$home_path" in uwsgi.ini"
     sed -i 's#path/to/home#'$home_path'#g' $project_name.ini
 
-    echo -e "9- Create link files."
+    echo -e "10- Create link files."
     sudo rm -f /etc/nginx/sites-enabled/$project_name.conf
     sudo rm -f /etc/nginx/sites-available/$project_name.conf
     sudo rm -f /etc/uwsgi/apps-available/$project_name.ini
@@ -174,7 +178,11 @@ then
     sudo ln -s $project_path/$project_name.conf /etc/nginx/sites-available/
     sudo ln -s $project_path/$project_name.ini /etc/uwsgi/apps-available/
 
-    echo -e "10- Restart nginx server and uWSGI."
+    echo -e "11- Change settings to production environ."
+    sed -i "s#"$project_name".settings#"$project_name".settings_production#g" $project_path/$project_name/wsgi.py
+
+
+    echo -e "12- Restart nginx server and uWSGI."
     sudo /etc/rc.local
 
 elif [ "$choice"x = "update"x ]
