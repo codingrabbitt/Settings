@@ -121,9 +121,9 @@ let python_highlight_all=1
 let mapleader="\<Space>"
 
 "退出
-nnoremap <Leader>s :w<CR>
+nnoremap <Leader>s :call TitleDet()<CR>:w<CR>
 nnoremap <Leader>e :wq!<CR>
-nnoremap <Leader>w :call TitleDet()<CR>:w<CR>
+nnoremap <Leader>w :call TitleDet()<CR>:wq!<CR>
 nnoremap <Leader>q :q!<CR>
 
 "对齐
@@ -267,6 +267,9 @@ let g:user_emmet_expandabbr_key='<c-e>'
 let g:user_emmet_complete_tag=1
 let g:user_emmet_next_key='<c-n>'
 let g:user_emmet_prev_key='<c-p>'
+
+"YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '/Users/youchen/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "运行
 map <Leader>r :call CR2()<cr>

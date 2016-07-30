@@ -10,8 +10,8 @@ then
 
     sudo rm -rf ~/.vim
     sudo rm -rf ~/.vimrc
-    sudo cp -r ~/Settings/vim_settings/.vim ~/.vim
-    sudo cp -r ~/Settings/vim_settings/.vimrc ~/.vimrc
+    sudo cp -r ./.vim ~/.vim
+    sudo cp -r ./.vimrc ~/.vimrc
     
     echo "Your name:\c"
     read name
