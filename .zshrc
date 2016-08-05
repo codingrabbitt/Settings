@@ -119,7 +119,7 @@ alias djm="python manage.py migrate"
 alias djs="python manage.py shell"
 
 # Virtualenv alias
-alias sba="source ./bin/activate"
+alias sba='p="bin/activate";while true;do if [ -f $p ];then break;fi;p="../"${p};done;source $p'
 alias da="deactivate"
 
 # Git alias
