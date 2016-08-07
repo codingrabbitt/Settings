@@ -92,6 +92,7 @@ filetype plugin indent on
 
 set encoding=utf-8
 set fileformat=unix
+set term=linux
 
 "对齐设置
 set autoindent
