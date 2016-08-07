@@ -101,10 +101,10 @@ set cindent
 
 
 "配色主题设置
-colorscheme molokai
+set t_Co=256
 let g:molokai_original = 1
 let g:rehash256 = 1
-set t_Co=256
+colorscheme molokai
 
 "缩进相关设置
 set expandtab
@@ -198,11 +198,11 @@ set nobackup
 set nu "行号
 
 "设置持久撤销
-let $VIMTEMP = '~/.vim/tmp'
+let $VIMTEMP = $HOME.'/.vim/tmp'
 if v:version >= 703
     set undofile
     set undodir=$VIMTEMP
-    set undolevels=1000 "maximum number of changes that can be undone
+    set undolevels=100 "maximum number of changes that can be undone
     set undoreload=10000 "maximum number lines to save for undo on a buffer
 endif
 
@@ -361,5 +361,4 @@ function TitleDet()
     endwhile
     call AddTitle()
 endfunction
-
 
