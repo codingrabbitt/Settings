@@ -83,7 +83,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+"Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-powerline'
 Bundle 'taglist.vim'
 Bundle 'mattn/emmet-vim'
@@ -171,6 +171,10 @@ vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
 
+"折叠
+nnoremap z za
+vnoremap z zf
+
 "YouCompleteMe 快捷键
 nnoremap <Leader>ff :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>fg :YcmCompleter GoToDefinition<CR>
@@ -196,6 +200,12 @@ set hlsearch
 set showmatch
 set nobackup
 set nu "行号
+
+"折叠设置
+set foldlevel=99
+set foldmethod=manual
+autocmd FileType python setlocal foldmethod=indent
+set foldnestmax=2
 
 "设置持久撤销
 let $VIMTEMP = $HOME.'/.vim/tmp'
@@ -225,7 +235,7 @@ filetype indent on
 filetype plugin on
 
 "Github
-autocmd Filetype gitcommit setlocal spell textwidth=80
+autocmd Filetype gitcommit setlocal spell textwidth=100
 
 "NERDtree
 nmap <Leader>fl :NERDTreeToggle<CR>
@@ -252,6 +262,11 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": [],
     \ "passive_filetypes": [] }
+"let g:syntastic_quiet_messages = {
+"    \ "level": "errors",
+"    \ "type": "style",
+"    \ "regex": "\m\[F403]",
+"    \ "file:e": ['py'] }
 
 "Taglist
 let Tlist_Use_Right_Window = 1
@@ -277,18 +292,20 @@ map <Leader>r :call CR2()<cr>
 func CR2()
     if &filetype=="cpp"
         if has("mac")
-            exec "!g++-5 %<.cpp -o %< && ./%<"
+            exec "!g++-6 %<.cpp -o %< && ./%<"
         else
             exec "!g++ %<.cpp -o %< && ./%<"
         endif
     elseif &filetype=="c"
         if has("mac")
-            exec "!gcc-5 %<.cpp -o %< && ./%<"
+            exec "!gcc-6 %<.cpp -o %< && ./%<"
         else
             exec "!gcc %<.c -o %< && ./%<"
         endif
     elseif &filetype=="python"
         exec "!python \"./%<.py\""
+    elseif &filetype=="go"
+        exec "!go run \"./%<.go\""
     endif
 endfunc
 
@@ -297,6 +314,9 @@ function AddTitle()
         let prefix = '//'
         let start = 0
     elseif &filetype=="c"
+        let prefix = '//'
+        let start = 0
+    elseif &filetype=="go"
         let prefix = '//'
         let start = 0
     elseif &filetype=="python"
@@ -324,6 +344,8 @@ function UpdateTitle()
         let prefix = '\/\/'
     elseif &filetype=="c"
         let prefix = '\/\/'
+    elseif &filetype=="go"
+        let prefix = '\/\/'
     elseif &filetype=="python"
         let prefix = '#'
     else
@@ -343,6 +365,8 @@ function TitleDet()
     if &filetype=="cpp"
         let prefix = '\/\/'
     elseif &filetype=="c"
+        let prefix = '\/\/'
+    elseif &filetype=="go"
         let prefix = '\/\/'
     elseif &filetype=="python"
         let prefix = '#'
