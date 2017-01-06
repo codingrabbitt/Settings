@@ -100,8 +100,6 @@ alias cls="clear"
 alias vi="vim"
 
 # Files
-alias sublime="'/opt/homebrew-cask/Caskroom/sublime-text/2.0.2/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
-alias -s html=sublime
 alias -s py=vi
 alias -s js=vi
 alias -s c=vi
@@ -129,3 +127,8 @@ alias gitc="git commit"
 alias gitps="git push"
 alias gitpl="git pull"
 
+# My alias
+alias reds="redis-server /usr/local/etc/redis.conf"
+alias reds-np="redis-server /usr/local/etc/redis_no_persistence.conf"
+alias redc="redis-cli"
+alias jeksrv="bundle exec jekyll serve"

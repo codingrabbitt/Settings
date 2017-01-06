@@ -23,57 +23,6 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 
 behave mswin
-
-
-
-set diffexpr=MyDiff()
-
-function MyDiff()
-
-    let opt = '-a --binary '
-
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-
-    let arg1 = v:fname_in
-
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-
-    let arg2 = v:fname_new
-
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-
-    let arg3 = v:fname_out
-
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-
-    let eq = ''
-
-    if $VIMRUNTIME =~ ' '
-
-        if &sh =~ '\<cmd'
-
-            let cmd = '""' . $VIMRUNTIME . '\diff"'
-
-            let eq = '"'
-
-        else
-
-            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-
-        endif
-
-    else
-
-        let cmd = $VIMRUNTIME . '\diff'
-
-    endif
-
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-
-endfunction
-
 "Vundle
 set nocompatible
 filetype off
@@ -105,6 +54,7 @@ set t_Co=256
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+set cc=80
 
 "缩进相关设置
 set expandtab
@@ -174,6 +124,8 @@ vmap <BS> gg
 "折叠
 nnoremap z za
 vnoremap z zf
+
+nnoremap <Leader>v <C-v>
 
 "YouCompleteMe 快捷键
 nnoremap <Leader>ff :YcmCompleter GoToDeclaration<CR>
@@ -246,7 +198,7 @@ let NERDTreeWinPos="right"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=0
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
@@ -258,6 +210,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": [],
@@ -303,9 +256,15 @@ func CR2()
             exec "!gcc %<.c -o %< && ./%<"
         endif
     elseif &filetype=="python"
-        exec "!python \"./%<.py\""
+        exec "!python3 \"./%<.py\""
     elseif &filetype=="go"
         exec "!go run \"./%<.go\""
+    else
+        let line = getline(1)
+        if line =~ '^#.*$'
+            let prog=strpart(line, 1)
+            exec prog." \"./%\""
+        endif
     endif
 endfunc
 
@@ -321,7 +280,7 @@ function AddTitle()
         let start = 0
     elseif &filetype=="python"
         let prefix = '#'
-        call append(0,"#!/usr/bin/python")
+        call append(0,"#!/usr/local/bin/python3")
         call append(1,"# coding: UTF-8")
         let start = 2
     else
