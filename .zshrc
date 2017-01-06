@@ -121,11 +121,7 @@ alias sba='p="bin/activate";while true;do if [ -f $p ];then break;fi;p="../"${p}
 alias da="deactivate"
 
 # Git alias
-alias gits="git status"
-alias gitaa="echo -e \"\033[33m### Before add ###\033[0m\" && gits && git add . && echo -e \"\033[33m### After add ###\033[0m\" && gits"
-alias gitc="git commit"
-alias gitps="git push"
-alias gitpl="git pull"
+alias gaa="echo -e \"\033[33m### Before add ###\033[0m\" && gst && git add . && echo -e \"\033[33m### After add ###\033[0m\" && gst"
 
 # My alias
 alias reds="redis-server /usr/local/etc/redis.conf"
