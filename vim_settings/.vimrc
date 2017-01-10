@@ -32,7 +32,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-"Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-powerline'
 Bundle 'taglist.vim'
 Bundle 'mattn/emmet-vim'
@@ -210,16 +210,16 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_mode_map = {
-    \ "mode": "passive",
+    \ "mode": "active",
     \ "active_filetypes": [],
     \ "passive_filetypes": [] }
-"let g:syntastic_quiet_messages = {
-"    \ "level": "errors",
-"    \ "type": "style",
-"    \ "regex": "\m\[F403]",
-"    \ "file:e": ['py'] }
+
+" Disable python 80 chars warning [E501]
+let g:syntastic_quiet_messages = {
+    \ "regex":   '\m\[E501]'}
+
 
 "Taglist
 let Tlist_Use_Right_Window = 1
@@ -229,7 +229,8 @@ let Tlist_Sort_Type ='name'
 let Tlist_GainFocus_On_ToggleOpen = 1 
 let Tlist_Exit_OnlyWindow = 1 
 let Tlist_WinWidth = 32 
-let Tlist_Ctags_Cmd ='/usr/local/Cellar/ctags/5.8_1/bin/ctags' 
+"let Tlist_Ctags_Cmd ='/usr/local/Cellar/ctags/5.8_1/bin/ctags' 
+"let Tlist_Ctags_Cmd ='ctags'
 
 "Emmet
 let g:user_emmet_expandabbr_key='<c-e>'
@@ -238,7 +239,7 @@ let g:user_emmet_next_key='<c-n>'
 let g:user_emmet_prev_key='<c-p>'
 
 "YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '/Users/youchen/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "运行
 map <Leader>r :call CR2()<cr>
