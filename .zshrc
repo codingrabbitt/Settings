@@ -96,18 +96,6 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # System alias
 alias ls="ls -G"
 alias ll="ls -l"
-alias cls="clear"
-alias vi="vim"
-
-# Files
-alias -s py=vi
-alias -s js=vi
-alias -s c=vi
-alias -s c++=vi
-alias -s gz="tar -xzvf"
-alias -s tgz="tar -xzvf"
-alias -s zip="unzip"
-alias -s bz2="tar -xjvf"
 
 # Django alias
 alias djr="python manage.py runserver"
@@ -127,4 +115,7 @@ alias gaa="echo -e \"\033[33m### Before add ###\033[0m\" && gst && git add . && 
 alias reds="redis-server /usr/local/etc/redis.conf"
 alias reds-np="redis-server /usr/local/etc/redis_no_persistence.conf"
 alias redc="redis-cli"
-alias jeksrv="bundle exec jekyll serve"
+alias hexd="hexo clean && hexo g && hexo deploy && hexo clean"
+alias hexs="hexo clean && hexo serve"
+alias jpn="jupyter notebook"
+export PATH="/usr/local/opt/opencv3/bin:$HOME/Library/Python/3.6/bin:/usr/local/sbin:$PATH"
