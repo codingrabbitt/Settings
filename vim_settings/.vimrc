@@ -34,6 +34,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'terryma/vim-expand-region'
 Bundle 'taglist.vim'
 Bundle 'mattn/emmet-vim'
 call vundle#end()
@@ -112,14 +113,33 @@ nnoremap <silent> <Right> :vertical res+5<CR>
 nnoremap <tab> :bp<CR>
 
 "复制粘贴
-vmap <Leader>c "+y
-nnoremap <Leader>p "+P
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 "文件头尾跳转
 nnoremap <CR> G
 vmap <CR> G
 nnoremap <BS> gg
 vmap <BS> gg
+
+"进入Visual-Line模式
+nmap <Leader><Leader> V
+
+"查找替换
+"1. 使用/something查找
+"2. 使用cs替换第一个，然后按<Esc>键
+"3. 使用n.n.n.查找并替换余下匹配项
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+"自动跳转到粘贴文本最后
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 "折叠
 nnoremap z za
@@ -137,6 +157,10 @@ nnoremap <Leader>cn :SyntasticToggleMode<CR>
 
 "Taglist
 nnoremap <Leader>tl :TlistToggle<CR>
+
+"区域扩展
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 
 "界面设置
 set guioptions-=l
@@ -196,7 +220,7 @@ let NERDTreeWinSize=32
 " 设置NERDTree子窗口位置
 let NERDTreeWinPos="right"
 " 显示隐藏文件
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 " NERDTree 子窗口中不显示冗余帮助信息
 let NERDTreeMinimalUI=0
 " 删除文件时自动删除文件对应 buffer
@@ -212,13 +236,15 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_mode_map = {
-    \ "mode": "active",
+    \ "mode": "passive",
     \ "active_filetypes": [],
     \ "passive_filetypes": [] }
 
 " Disable python 80 chars warning [E501]
 let g:syntastic_quiet_messages = {
-    \ "regex":   '\m\[E501]'}
+    \ "regex": ['\m\[E501]', '\m\[E731]']}
+
+let g:syntastic_python_checkers = ['flake8']
 
 
 "Taglist
